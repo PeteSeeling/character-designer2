@@ -1,23 +1,30 @@
 const headDropdown = document.getElementById('head-dropdown');
 const middleDropdown = document.getElementById('middle-dropdown');
 const bottomDropdown = document.getElementById('bottom-dropdown');
-const headEl = document.getElementById('top');
+const headEl = document.getElementById('head');
+const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
+const statsEl = document.getElementById('stats');
 const chatchphrasesEl = document.getElementById('chatch-phrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
+const catchphraseButton = document.getElementById('catchphrase-button');
 
-const headCount = 0;
-const middleCount = 0;
-const bottomCount = 0;
+let headCount = 0;
+let middleCount = 0;
+let bottomCount = 0;
 
-const catchphrases = 0;
+let catchphrases = [];
 
 headDropdown.addEventListener('change', () => {
-    const value = headDropdown.value;
+    const selection = headDropdown.value;
 
     headCount++;
-    headEl.backgroundImage = `url("./assets/${value}-head.png")`;
+
+    headEl.style.backgroundImage = `url(./assets/${selection}-head.png)`;
+
+   
+
     displayStats();
 });
 
@@ -26,7 +33,10 @@ middleDropdown.addEventListener('change', () => {
     const value = middleDropdown.value;
 
     middleCount++;
-    middleEl.backgroundImage = `url("./assets/${value}-middle.png")`;
+    middleEl.style.backgroundImage = `url(./assets/${value}-middle.png)`;
+
+    reportEl.textContent = 'You have clicked the middle$    {middleCount} times';
+
     displayStats();
 });
 
@@ -35,17 +45,19 @@ bottomDropdown.addEventListener('change', () => {
     const value = bottomDropdown.value;
 
     bottomCount++;
-    bottomEl.backgroundImage = `url("./assets/${value}-pants.png")`;
+    bottomEl.style.backgroundImage = `url(./assets/${value}-pants.png)`;
+
+    reportEl.textContent = 'You have clicked the bottom${bottomCount} times';
     displayStats();
 });
 
-catchphraseButton.addEventListener = () => {
+catchphraseButton.addEventListener('click', () => {
     const newCatchphrase = catchphraseInput.value;
     catchphrases.push(newCatchphrase);
 
     catchphraseInput.value = '';
     displayCatchphrases();
-};
+});
 
 function displayStats() {
     return `You have changed the head ${headCount} times, the body ${middleCount} times, and the pants ${bottomCount} times. And nobody can forget your character's classic catchphrases:`;
@@ -55,7 +67,7 @@ function displayCatchphrases() {
     for (let catchphrase of catchphrases) {
         const p = document.createElement('p');
 
-        p.add('catchphrase');
+        p.createElement('catchphrase');
         p.textContent = catchphrases;
 
         chatchphrasesEl.append(p);
