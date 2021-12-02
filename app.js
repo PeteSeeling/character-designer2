@@ -6,7 +6,7 @@ const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
 const statsEl = document.getElementById('stats');
-const chatchphrasesEl = document.getElementById('chatch-phrases');
+const catchphrasesEl = document.getElementById('catch-phrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
 
@@ -23,9 +23,8 @@ headDropdown.addEventListener('change', () => {
 
     headEl.style.backgroundImage = `url(./assets/${selection}-head.png)`;
 
-   
-
     displayStats();
+    console.log(bottomCount)
 });
 
 
@@ -35,7 +34,7 @@ middleDropdown.addEventListener('change', () => {
     middleCount++;
     middleEl.style.backgroundImage = `url(./assets/${value}-middle.png)`;
 
-    reportEl.textContent = 'You have clicked the middle$    {middleCount} times';
+    
 
     displayStats();
 });
@@ -47,7 +46,7 @@ bottomDropdown.addEventListener('change', () => {
     bottomCount++;
     bottomEl.style.backgroundImage = `url(./assets/${value}-pants.png)`;
 
-    reportEl.textContent = 'You have clicked the bottom${bottomCount} times';
+    
     displayStats();
 });
 
@@ -60,15 +59,16 @@ catchphraseButton.addEventListener('click', () => {
 });
 
 function displayStats() {
-    return `You have changed the head ${headCount} times, the body ${middleCount} times, and the pants ${bottomCount} times. And nobody can forget your character's classic catchphrases:`;
+    reportEl.textContent = `You have changed the head ${headCount} times, the body ${middleCount} times, and the pants ${bottomCount} times. And nobody can forget your character's classic catchphrases:`;
 }
 
 function displayCatchphrases() {
+    catchphraseEl.textContent = [];
     for (let catchphrase of catchphrases) {
         const p = document.createElement('p');
 
-        p.createElement('catchphrase');
-        p.textContent = catchphrases;
+        p.classList('catchphrase');
+        p.textContent = catchphrase;
 
         chatchphrasesEl.append(p);
     }
