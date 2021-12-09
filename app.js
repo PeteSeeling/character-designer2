@@ -36,7 +36,7 @@ middleDropdown.addEventListener('change', () => {
     middleEl.style.backgroundImage = `url(./assets/${value}-middle.png)`;
 
     
-
+    
     displayStats();
 });
 
@@ -62,8 +62,13 @@ catchphraseButton.addEventListener('click', () => {
 });
 
 function displayStats() {
+const statsString = displayStatsString();
+
     reportEl.textContent = `You have changed the head ${headCount} times, the body ${middleCount} times, and the pants ${bottomCount} times. And nobody can forget your character's classic catchphrases:`;
+
+    
 }
+
 
 function displayCatchphrases(){
     for (let phrase of catchphrases){
@@ -75,6 +80,7 @@ function displayCatchphrases(){
   
     }}
 
-
-
+function displayStatsString(headCount, middleCount, bottomCount){
+    return 'report';
+}
 
