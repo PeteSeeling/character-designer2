@@ -1,3 +1,5 @@
+
+
 const headDropdown = document.getElementById('head-dropdown');
 const middleDropdown = document.getElementById('middle-dropdown');
 const bottomDropdown = document.getElementById('bottom-dropdown');
@@ -6,7 +8,7 @@ const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
 const statsEl = document.getElementById('stats');
-const catchphrasesEl = document.getElementById('catch-phrases');
+const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
 
@@ -22,9 +24,8 @@ headDropdown.addEventListener('change', () => {
     headCount++;
 
     headEl.style.backgroundImage = `url(./assets/${selection}-head.png)`;
-
     displayStats();
-    console.log(bottomCount)
+    
 });
 
 
@@ -51,25 +52,33 @@ bottomDropdown.addEventListener('change', () => {
 });
 
 catchphraseButton.addEventListener('click', () => {
-    const newCatchphrase = catchphraseInput.value;
-    catchphrases.push(newCatchphrase);
+    const newCatchPhrase = catchphraseInput.value;
+    catchphrases.push(newCatchPhrase);
+    
 
     catchphraseInput.value = '';
-    displayCatchphrases();
+
+    displayCatchphrases();  
 });
 
 function displayStats() {
     reportEl.textContent = `You have changed the head ${headCount} times, the body ${middleCount} times, and the pants ${bottomCount} times. And nobody can forget your character's classic catchphrases:`;
 }
 
-function displayCatchphrases() {
-    catchphraseEl.textContent = [];
-    for (let catchphrase of catchphrases) {
+function displayCatchphrases(){
+    for (let phrase of catchphrases){
         const p = document.createElement('p');
+        p.classList.add('catchphrase');
+        p.textContent = phrase;
+        catchphrasesEl.append(p);
+        catchphrases = [];
+  
+       
 
-        p.classList('catchphrase');
-        p.textContent = catchphrase;
+ 
+    
+    }}
 
-        chatchphrasesEl.append(p);
-    }
-}
+
+
+
