@@ -73,10 +73,6 @@ function displayCatchphrases(){
         catchphrasesEl.append(p);
         catchphrases = [];
   
-       
-
- 
-    
     }}
 
 
