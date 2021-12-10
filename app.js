@@ -1,3 +1,4 @@
+import { createStatsString } from './utils.js';
 
 
 const headDropdown = document.getElementById('head-dropdown');
@@ -7,7 +8,6 @@ const headEl = document.getElementById('head');
 const middleEl = document.getElementById('middle');
 const bottomEl = document.getElementById('bottom');
 const reportEl = document.getElementById('report');
-const statsEl = document.getElementById('stats');
 const catchphrasesEl = document.getElementById('catchphrases');
 const catchphraseInput = document.getElementById('catchphrase-input');
 const catchphraseButton = document.getElementById('catchphrase-button');
@@ -62,9 +62,8 @@ catchphraseButton.addEventListener('click', () => {
 });
 
 function displayStats() {
-const statsString = displayStatsString();
 
-    reportEl.textContent = `You have changed the head ${headCount} times, the body ${middleCount} times, and the pants ${bottomCount} times. And nobody can forget your character's classic catchphrases:`;
+    reportEl.textContent = createStatsString(headCount, middleCount, bottomCount);
 
     
 }
@@ -79,8 +78,4 @@ function displayCatchphrases(){
         catchphrases = [];
   
     }}
-
-function displayStatsString(headCount, middleCount, bottomCount){
-    return 'report';
-}
 
